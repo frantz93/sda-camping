@@ -130,11 +130,9 @@
 
     /* PANNEAU GAUCHE FUSIONNÉ (STATS) */
     .left-panel {
-      flex: 0 0 300px;
-      /* Taille fixe pour l'équilibre */
+      flex: 0 0 320px;
       padding: 0;
-      margin-top: 80px;
-      /* Ajustement pour ne pas chevaucher l'image d'entête */
+      margin-top: 100px;
       background: transparent;
       box-shadow: none;
       border: none;
@@ -153,8 +151,7 @@
 
     /* ESPACEUR À DROITE POUR ÉQUILIBRER LE CENTRAGE */
     .right-spacer {
-      flex: 0 0 300px;
-      /* Même largeur que le left-panel */
+      flex: 0 0 320px;
     }
 
     iframe {
@@ -176,6 +173,29 @@
       display: block;
     }
 
+    /* FOOTER CONTACT */
+    .footer-contact {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 0;
+      /* Directement sous l'image full-width */
+    }
+
+    .footer-contact h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .footer-contact p {
+      margin: 5px 0;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
     /* RESPONSIVE */
     @media (max-width: 1200px) {
       .right-spacer {
@@ -191,6 +211,10 @@
     }
 
     @media (max-width: 768px) {
+      .header {
+        min-height: 350px;
+        padding: 40px 15px;
+      }
       .info-image-header {
         position: relative;
         top: 0;
@@ -199,23 +223,26 @@
         max-width: 100%;
         display: block;
       }
-
       .container {
-        margin-top: -30px;
+        margin-top: -20px;
+        padding: 0 15px;
       }
-
       .content-wrapper {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
       }
-
-      .left-panel,
+      .left-panel {
+        flex: none;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
       .right-panel {
         width: 100%;
         flex: none;
       }
     }
-
     /* FOOTER CONTACT */
     .footer-contact {
       background: var(--primary);
