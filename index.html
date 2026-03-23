@@ -64,17 +64,15 @@
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
     }
 
-    /* IMAGE INFOS.PNG EN HAUT À GAUCHE (ABSOLU) */
+    /* IMAGE INFOS.PNG CENTRÉE (NOUVEAU) */
     .info-image-header {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      max-width: 500px;
+      display: block;
+      margin: 25px auto 0;
+      max-width: 550px;
       width: 100%;
       border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      z-index: 2;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.1);
     }
 
     .header-content {
@@ -83,6 +81,7 @@
       max-width: 1200px;
       width: 100%;
       text-align: center;
+      padding: 20px 0;
     }
 
     .header-text-block {
@@ -91,15 +90,15 @@
 
     .logo {
       max-width: 140px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     }
 
     .header h1 {
       margin: 0;
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
@@ -211,17 +210,12 @@
 
     @media (max-width: 768px) {
       .header {
-        min-height: 350px;
+        min-height: 300px;
         padding: 40px 15px;
       }
 
       .info-image-header {
-        position: relative;
-        top: 0;
-        left: 0;
-        margin: 0 auto 20px;
         max-width: 100%;
-        display: block;
       }
 
       .container {
@@ -238,13 +232,12 @@
   <header class="header">
     <div class="overlay"></div>
 
-    <!-- IMAGE INFOS.PNG SUR LE HEADER (POSITION ABSOLUE) -->
-    <img src="infos.png" alt="Informations" class="info-image-header">
-
     <div class="header-content">
       <div class="header-text-block">
         <img src="logo.png" alt="Logo de l'organisation" class="logo">
         <h1>Camp d'été 2026</h1>
+        <!-- IMAGE INFOS.PNG CENTRÉE SOUS LE TITRE -->
+        <img src="infos.png" alt="Informations" class="info-image-header">
       </div>
     </div>
   </header>
