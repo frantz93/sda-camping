@@ -1,112 +1,306 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Formulaire de réservation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
   <meta property="og:title" content="Réservation - Camp été famille 2026">
   <meta property="og:description" content="Réservez votre hébergement pour le camp d'été familial 2026.">
-  <meta property="og:image" content="https://github.com/frantz93/camp-ete-famille-2026/blob/main/meta_image.png">
+  <meta property="og:image" content="https://frantz93.github.io/camp-ete-famille-2026/meta_image.png">
   <meta property="og:url" content="https://frantz93.github.io/camp-ete-famille-2026/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+    :root {
+      --primary: #2c3e50;
+      --secondary: #34495e;
+      --accent: #27ae60;
+      --bg: #f8f9fa;
+      --white: #ffffff;
+      --text: #2c3e50;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
     }
 
-    /* HEADER AVEC IMAGE */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
     .header {
       position: relative;
-      height: 300px;
+      min-height: 450px;
+      padding: 60px 20px;
       background: url('cover.png') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
-    /* OVERLAY (assombrit l'image) */
     .overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
     }
 
-    /* CONTENU DANS LE HEADER */
+    /* IMAGE INFOS.PNG EN HAUT À GAUCHE (ABSOLU) */
+    .info-image-header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      z-index: 2;
+    }
+
     .header-content {
       position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      width: 100%;
       text-align: center;
+    }
+
+    .header-text-block {
       color: white;
     }
 
     .logo {
-      max-width: 120px;
-      margin-bottom: 10px;
+      max-width: 140px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     }
 
     .header h1 {
       margin: 0;
-      font-size: 32px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .header p {
-      margin-top: 5px;
-      font-size: 16px;
+      margin-top: 10px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      opacity: 0.95;
     }
 
-    /* CONTENU PRINCIPAL */
+    /* SECTION PRINCIPALE */
     .container {
-      padding: 30px 20px;
-      text-align: center;
+      max-width: 1300px;
+      margin: -60px auto 40px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
     }
 
-    .form-container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    /* FLEXBOX POUR SIDE-BY-SIDE ÉQUILIBRÉ (CENTRAGE DU FORMULAIRE) */
+    .content-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* PANNEAU GAUCHE FUSIONNÉ (STATS) */
+    .left-panel {
+      flex: 0 0 300px;
+      /* Taille fixe pour l'équilibre */
+      padding: 0;
+      margin-top: 80px;
+      /* Ajustement pour ne pas chevaucher l'image d'entête */
+      background: transparent;
+      box-shadow: none;
+      border: none;
+    }
+
+    /* PANNEAU DROITE (FORMULAIRE PRINCIPAL) - CENTRÉ */
+    .right-panel {
+      flex: 1;
+      max-width: 800px;
+      min-width: 320px;
+      background: var(--white);
+      padding: 10px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* ESPACEUR À DROITE POUR ÉQUILIBRER LE CENTRAGE */
+    .right-spacer {
+      flex: 0 0 300px;
+      /* Même largeur que le left-panel */
     }
 
     iframe {
       width: 100%;
-      height: 750px;
+      min-height: 550px;
       border: none;
+      border-radius: 8px;
     }
 
+    /* FOOTER IMAGE FULL WIDTH */
+    .footer-image-container {
+      width: 100%;
+      margin-top: 60px;
+    }
+
+    .footer-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      .right-spacer {
+        display: none;
+        /* Déséquilibre acceptable sur petites tablettes pour gagner de la place */
+      }
+    }
+
+    @media (max-width: 992px) {
+      .info-image-header {
+        max-width: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .info-image-header {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0 auto 20px;
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        margin-top: -30px;
+      }
+
+      .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .left-panel,
+      .right-panel {
+        width: 100%;
+        flex: none;
+      }
+    }
+
+    /* FOOTER CONTACT */
+    .footer-contact {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 0;
+      /* Directement sous l'image full-width */
+    }
+
+    .footer-contact h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .footer-contact p {
+      margin: 5px 0;
+      opacity: 0.9;
+      font-weight: 300;
+    }
   </style>
 </head>
 
 <body>
 
   <!-- HEADER -->
-  <div class="header">
+  <header class="header">
     <div class="overlay"></div>
 
+    <!-- IMAGE INFOS.PNG SUR LE HEADER (POSITION ABSOLUE) -->
+    <img src="infos.png" alt="Informations" class="info-image-header">
+
     <div class="header-content">
-      <img src="logo.png" alt="Logo" class="logo">
-      <h1>Inscription - Camp d'été 2026</h1>
-      <p>Complétez le formulaire pour réserver votre séjour</p>
+      <div class="header-text-block">
+        <img src="logo.png" alt="Logo de l'organisation" class="logo">
+        <h1>Camp d'été 2026</h1>
+      </div>
     </div>
+  </header>
+
+  <!-- FORMULAIRE ET CONTENU LATÉRAL -->
+  <main class="container">
+    <div class="content-wrapper">
+
+      <!-- SCRIPT POUR LA HAUTEUR DYNAMIQUE DES IFRAMES AIRTABLE -->
+      <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
+
+      <!-- CONTENU GAUCHE (STATS - FUSIONNÉ ET DYNAMIQUE) -->
+      <aside class="left-panel">
+        <iframe class="airtable-embed airtable-dynamic-height"
+          src="https://airtable.com/embed/appmCctZ4vaLJzC4u/shry1O1fcitTNsWdB" frameborder="0" onmousewheel=""
+          width="100%" height="533" style="background: transparent; border: none;" title="Contenu additionnel Airtable">
+        </iframe>
+      </aside>
+
+      <!-- FORMULAIRE PRINCIPAL (CENTRE) -->
+      <div class="right-panel">
+        <iframe class="airtable-embed airtable-dynamic-height"
+          src="https://airtable.com/embed/appmCctZ4vaLJzC4u/shr97TTd7WVTAHBfH" frameborder="0" onmousewheel=""
+          width="100%" height="1800" style="background: transparent; border: none;"
+          title="Formulaire d'inscription Airtable">
+        </iframe>
+      </div>
+
+      <!-- ESPACEUR POUR ÉQUILIBRER LE CENTRAGE SUR DESKTOP -->
+      <div class="right-spacer"></div>
+
+    </div>
+  </main>
+
+  <!-- IMAGE DE BAS DE PAGE (COVER2.PNG) FULL WIDTH -->
+  <div class="footer-image-container">
+    <img src="cover2.png" alt="Vue du camping" class="footer-image">
   </div>
 
-  <!-- FORMULAIRE -->
-  <div class="container">
-    <div class="form-container">
-      <iframe
-        src="https://airtable.com/embed/appmCctZ4vaLJzC4u/shr97TTd7WVTAHBfH">
-      </iframe>
-    </div>
-  </div>
+  <!-- COORDONNÉES EN BAS DE PAGE -->
+  <footer class="footer-contact">
+    <h3>Coordonnées</h3>
+    <p>Eglise adventiste de la capitale nationale</p>
+    <p>855 Rue Saint-Vallier O</p>
+    <p>Québec, QC G1N 1E4</p>
+  </footer>
 
 </body>
+
 </html>
