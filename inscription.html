@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire de réservation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:title" content="Réservation - Camp été famille 2026">
+  <meta property="og:description" content="Réservez votre hébergement pour le camp d'été familial 2026.">
+  <meta property="og:image" content="https://frantz93.github.io/sda-camping/meta_image.png">
+  <meta property="og:url" content="https://frantz93.github.io/sda-camping/inscription.html">
+  <meta property="og:type" content="website">
+
+  <!-- WhatsApp / Small previews hints -->
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Réservation - Camp été famille 2026">
+  <meta name="twitter:description" content="Réservez votre hébergement pour le camp d'été familial 2026.">
+  <meta name="twitter:image" content="https://frantz93.github.io/sda-camping/meta_image.png">
+
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #34495e;
+      --accent: #27ae60;
+      --bg: #f8f9fa;
+      --white: #ffffff;
+      --text: #2c3e50;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    .header {
+      position: relative;
+      min-height: 450px;
+      padding: 60px 20px;
+      background: url('cover.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
+    }
+
+    /* IMAGE INFOS.PNG CENTRÉE (NOUVEAU) */
+    .info-image-header {
+      display: block;
+      margin: 25px auto 0;
+      max-width: 550px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .header-text-block {
+      color: white;
+    }
+
+    .logo {
+      max-width: 140px;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .header p {
+      margin-top: 10px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      opacity: 0.95;
+    }
+
+    /* SECTION PRINCIPALE */
+    .container {
+      max-width: 900px;
+      margin: -60px auto 40px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-container {
+      background: var(--white);
+      padding: 10px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+
+    .logement-image {
+      display: block;
+      width: 100%;
+      border-radius: 0;
+      box-shadow: var(--shadow);
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 550px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* FOOTER IMAGE FULL WIDTH */
+    .footer-image-container {
+      width: 100%;
+      margin-top: 60px;
+    }
+
+    .footer-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* FOOTER CONTACT */
+    .footer-contact {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 0;
+      /* Directement sous l'image full-width */
+    }
+
+    .footer-contact h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .footer-contact p {
+      margin: 5px 0;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* FOOTER IMAGE FULL WIDTH */
+    .footer-image-container {
+      width: 100%;
+      margin-top: 60px;
+    }
+
+    .footer-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* FOOTER CONTACT */
+    .footer-contact {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 0;
+    }
+
+    .footer-contact h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .footer-contact p {
+      margin: 5px 0;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .info-image-header {
+        max-width: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        min-height: 300px;
+        padding: 40px 15px;
+      }
+
+      .info-image-header {
+        max-width: 100%;
+      }
+
+      .container {
+        margin-top: -20px;
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="overlay"></div>
+
+    <div class="header-content">
+      <div class="header-text-block">
+        <a href="index.html"><img src="logo.png" alt="Logo de l'organisation" class="logo"></a>
+        <h1>Camp d'été 2026</h1>
+        <!-- IMAGE INFOS.PNG CENTRÉE SOUS LE TITRE -->
+        <img src="infos.png" alt="Informations" class="info-image-header">
+      </div>
+    </div>
+  </header>
+
+  <!-- FORMULAIRE -->
+  <main class="container">
+    <div class="form-container">
+      <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
+      <iframe class="airtable-embed airtable-dynamic-height"
+        src="https://airtable.com/embed/appmCctZ4vaLJzC4u/shr97TTd7WVTAHBfH" frameborder="0" onmousewheel=""
+        width="100%" height="1800" style="background: transparent; border: none;"
+        title="Formulaire d'inscription Airtable">
+      </iframe>
+    </div>
+
+    <!-- IMAGE LOGEMENT APRÈS LE FORMULAIRE -->
+    <img src="logements.png" alt="Options d'hébergement" class="logement-image">
+  </main>
+
+  <!-- IMAGE DE BAS DE PAGE (COVER2.PNG) FULL WIDTH -->
+  <div class="footer-image-container">
+    <img src="cover2.png" alt="Vue du camping" class="footer-image">
+  </div>
+
+  <!-- COORDONNÉES EN BAS DE PAGE -->
+  <footer class="footer-contact">
+    <h3>Coordonnées</h3>
+    <p>Eglise adventiste de la capitale nationale</p>
+    <p>855 Rue Saint-Vallier O</p>
+    <p>Québec, QC G1N 1E4</p>
+  </footer>
+
+</body>
+
+</html>
